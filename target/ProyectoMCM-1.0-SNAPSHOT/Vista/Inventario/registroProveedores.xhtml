@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Registro Proveedores</title>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+         <link rel="stylesheet" href="../../Estilos/StyleVenta.css"/>
+         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+        <h:outputStylesheet library="css" name="StyleGeneral.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </h:head>
+
+    <h:body>
+                <header class="header">
+            <a href="../../views/Sale/Modu_Vent - coor.html"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+            <a class="Inicio" name="Inicio" href="../Usuario/Validacion de usuario.html">Cerrar sesión</a>
+            <div class="container logo-nav-container">
+                <a href="#" class="logo">MCM</a>
+
+                <span class="menu-icon">Ver menú</span>
+                <nav class="navigation">
+                    <ul class="show">
+                        <li><a href="../Venta/ventas.xhtml">Ventas</a>
+                            <ul class="submenu">
+                                <li><a href="../Venta/cliente.xhtml" class="boton">Clientes</a></li>
+                                <li><a href="../Venta/Factura.xhtml" class="boton">Factura</a></li>
+                                <li><a href="../Venta/detallerFactura.xhtml" class="boton">Detalle Factura</a></li>
+                                <li><a href="../Venta/modoPago.xhtml" class="boton">Modo de pago</a></li>
+                                <li><a href="../Venta/taladro.xhtml" class="boton">Taladro</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="productos.xhtml">Inventario</a>
+                            <ul class="submenu">
+                                <li><a href="categoriaProducto.xhtml" class="boton">Categorias</a></li>
+                                <li><a href="detalleOrdenCompra.xhtml" class="boton">Detalle Orden Compra</a></li>
+                                <li><a href="inventario.xhtml" class="boton">Inventario</a></li>
+                                <li><a href="productos.xhtml" class="boton">Productos</a></li>
+                                <li><a href="ordenDeCompra.xhtml" class="boton">Orden de Compra</a></li>
+                                <li><a href="registroProveedores.xhtml" class="boton">Registro Proveedores</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../Mantenimiento/servicios.xhtml">Mantenimiento</a>
+                            <ul class="submenu">
+                                <li><a href="../Mantenimiento/ordenServicio.xhtml" class="boton">Orden de Servicio</a></li> 
+                                <li><a href="../Mantenimiento/servicios.xhtml" class="boton">Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../Tarea/tareas.xhtml">Tareas</a>
+                            <ul class="submenu">
+                                <li><a href="../Tarea/Agenda.xhtml" class="boton">Agenda</a></li>
+                                <li><a href="../Tarea/bonificacion.xhtml" class="boton">Bonificacion</a></li>
+                                <li><a href="../Tarea/detalleTareas.xhtml" class="boton">Detalle Tareas</a></li>
+                                 <li><a href="../Tarea/tareas.xhtml" class="boton">Tareass</a></li>
+                                <li><a href="../Tarea/tecnicos.xhtml" class="boton">Tecnicos</a></li>
+                                <a href=""></a>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <h2>
+            <h:outputText value="ESTÁ DENTRO DEL MÓDULO DE VENTAS"></h:outputText>
+        </h2>
+
+        <p:growl id="msn"/>
+        <h:form id="nuevo">
+            <p:fieldset legend="nuevo" toggleable="true">
+                <p:panelGrid columns="1">
+                    <p:commandButton value="nuevo" oncomplete="PF('valor').show();" icon="ui-icon-plusthick"/>
+                </p:panelGrid>
+
+            </p:fieldset>
+        </h:form>
+
+        <p:dialog widgetVar="valor" modal="true" header="nuevo proveedor" resizable="false" showEffect="clip">
+            <p:ajax event="close" listener="#{proveedoresBean.limpiarDatos()}" update=":proveedorform"/>
+            <h:form id="proveedorform">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="idproveedor"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.idProveedor}"/>
+
+                    <p:outputLabel value="nombre"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.nombre}"/>
+
+                    <p:outputLabel value="email"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.email}"/>
+
+                    <p:outputLabel value="telefono"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.telefono}"/>
+
+                    <p:outputLabel value="direccion"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.direccion}"/>
+
+                    <p:outputLabel value="contacto"/>
+                    <p:inputText value="#{proveedoresBean.proveedor.contacto}"/>
+
+                    <p:outputLabel value="ciudad"/>
+                    <p:selectOneMenu value="#{proveedoresBean.ciudad.idCiudad}">
+                        <f:selectItems value="#{ciudadesBean.listaCiudades}" var="pro" itemValue="#{pro.idCiudad}" itemLabel="#{pro.nombre_ciudad}">
+                        </f:selectItems>
+                    </p:selectOneMenu>  
+
+                    <p:commandButton value="Guardar Proveedor" actionListener="#{proveedoresBean.guardar()}" oncomplete="PF('valor').hide();"  update=":datosproveedor proveedorform :msn"/>
+                    <p:commandButton value="Actualizar Proveedor" actionListener="#{proveedoresBean.editar()}" oncomplete="PF('valor').hide();" update=":datosproveedor proveedorform :msn"/>
+
+                </p:panelGrid>            
+            </h:form>
+        </p:dialog> 
+
+        <h:form id="datosproveedor">
+            <p:fieldset legend="datosproveedor" toggleable="true">
+                 <div style="display: inline-block; align-content: space-between ">
+                        <h:commandLink>
+                            <h:graphicImage url="../../resources/excel.jpg" width="40" height="40" style="border-radius: 100%" />
+                            <p:dataExporter type="xls" target="tablaProveedores" fileName="DatosProveedores"/>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage url="../../resources/pdf_1.png" width="40" height="40" style="border-radius: 100%"/>
+                            <p:dataExporter type="pdf" target="tablaProveedores" fileName="DatosProveedores"/>
+                        </h:commandLink>
+                    </div>
+                <p:dataTable var="p" value="#{proveedoresBean.listaProveedor}" id="tablaProveedores"> 
+                    <p:column headerText="id proveedor">
+                        <h:outputText value="#{p.idProveedor}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="nombre">
+                        <h:outputText value="#{p.nombre}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="email">
+                        <h:outputText value="#{p.email}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="telefono">
+                        <h:outputText value="#{p.telefono}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="direccion">
+                        <h:outputText value="#{p.direccion}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="contacto">
+                        <h:outputText value="#{p.contacto}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="ciudad">
+                        <h:outputText value="#{p.ciudadesidCiudad.nombreCiudad}"></h:outputText>
+                    </p:column>                  
+                    <p:column headerText="Eliminar">
+                        <p:commandButton value="Eliminar" actionListener="#{proveedoresBean.eliminar(p)}" update=":datosproveedor :msn"/>
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" actionListener="#{proveedoresBean.cargarDatos(p)}" update=":proveedorform" oncomplete="PF('valor').show();"/>
+                    </p:column>  
+                </p:dataTable>
+            </p:fieldset>
+        </h:form>
+    </h:body>
+</html>

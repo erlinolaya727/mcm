@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Registro Detalle Orden</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+        <h:outputStylesheet library="css" name="StyleGeneral.css"/>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>-->
+    </h:head>
+
+    <h:body>
+        <header class="header">
+            <a href="../../views/Sale/Modu_Vent - coor.html"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+            <a class="Inicio" name="Inicio" href="../Usuario/Validacion de usuario.html">Cerrar sesión</a>
+            <div class="container logo-nav-container">
+                <a href="#" class="logo">MCM</a>
+
+                <span class="menu-icon">Ver menú</span>
+                <nav class="navigation">
+                    <ul class="show">
+                        <li><a href="../Venta/ventas.xhtml">Ventas</a>
+                            <ul class="submenu">
+                                <li><a href="../Venta/cliente.xhtml" class="boton">Clientes</a></li>
+                                <li><a href="../Venta/Factura.xhtml" class="boton">Factura</a></li>
+                                <li><a href="../Venta/detallerFactura.xhtml" class="boton">Detalle Factura</a></li>
+                                <li><a href="../Venta/modoPago.xhtml" class="boton">Modo de pago</a></li>
+                                <li><a href="../Venta/taladro.xhtml" class="boton">Taladro</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="productos.xhtml">Inventario</a>
+                            <ul class="submenu">
+                                <li><a href="categoriaProducto.xhtml" class="boton">Categorias</a></li>
+                                <li><a href="detalleOrdenCompra.xhtml" class="boton">Detalle Orden Compra</a></li>
+                                <li><a href="inventario.xhtml" class="boton">Inventario</a></li>
+                                <li><a href="productos.xhtml" class="boton">Productos</a></li>
+                                <li><a href="ordenDeCompra.xhtml" class="boton">Orden de Compra</a></li>
+                                <li><a href="registroProveedores.xhtml" class="boton">Registro Proveedores</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../Mantenimiento/servicios.xhtml">Mantenimiento</a>
+                            <ul class="submenu">
+                                <li><a href="../Mantenimiento/ordenServicio.xhtml" class="boton">Orden de Servicio</a></li> 
+                                <li><a href="../Mantenimiento/servicios.xhtml" class="boton">Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../Tarea/tareas.xhtml">Tareas</a>
+                            <ul class="submenu">
+                                <li><a href="../Tarea/Agenda.xhtml" class="boton">Agenda</a></li>
+                                <li><a href="../Tarea/bonificacion.xhtml" class="boton">Bonificacion</a></li>
+                                <li><a href="../Tarea/detalleTareas.xhtml" class="boton">Detalle Tareas</a></li>
+                                 <li><a href="../Tarea/tareas.xhtml" class="boton">Tareass</a></li>
+                                <li><a href="../Tarea/tecnicos.xhtml" class="boton">Tecnicos</a></li>
+                                <a href=""></a>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <p:growl id="msn"/>
+        <h:form id="nuevo">
+            <p:fieldset legend="nuevo" toggleable="true">
+                <p:panelGrid columns="1">
+                    <p:commandButton value="nuevo" oncomplete="PF('valor').show();"/>
+                </p:panelGrid>
+
+            </p:fieldset>
+        </h:form>
+
+        <p:dialog widgetVar="valor" modal="true" header="Nuevo Detalle Orden Compra" resizable="false" showEffect="clip">
+            <p:ajax event="close" listener="#{detalleOrdenCompraBean.limpiarDatos()}" update=":detalleForm"/>
+            <h:form id="detalleForm">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="ID DETALLE"/>
+                    <p:inputText value="#{detalleOrdenCompraBean.detalleOrdenCompra.idDetalle}"/>
+
+                    <p:outputLabel value="DESCRIPCIÓN"/>
+                    <p:inputText value="#{detalleOrdenCompraBean.detalleOrdenCompra.descripcion}"/>
+
+                    <p:outputLabel value="CANTIDAD"/>
+                    <p:inputText value="#{detalleOrdenCompraBean.detalleOrdenCompra.cantidad}"/>
+
+                    <p:outputLabel value="PRECIO COMPRA"/>
+                    <p:inputText value="#{detalleOrdenCompraBean.detalleOrdenCompra.precioCompra}"/>
+
+                    <p:outputLabel value="ID PRODUCTO"/>
+                    <p:selectOneMenu value="#{detalleOrdenCompraBean.producto.idProducto}">
+                        <f:selectItems value="#{productoBean.listaProductos}" var="doc" itemValue="#{doc.idProducto}" itemLabel="#{doc.nombre}">
+                        </f:selectItems>
+                    </p:selectOneMenu>  
+
+                    <p:outputLabel value="ID ORDEN COMPRA"/>
+                    <p:selectOneMenu value="#{detalleOrdenCompraBean.ordenCompra.idOrden}">
+                        <f:selectItems value="#{ordenDeCompraBean.listaOrdenDeCompra}" var="odc" itemValue="#{odc.idOrden}" itemLabel="#{odc.idOrden}">
+                        </f:selectItems>
+                    </p:selectOneMenu>  
+
+                    <p:commandButton value="Guardar" actionListener="#{detalleOrdenCompraBean.guardar()}" oncomplete="PF('valor').hide();"  update=":datosDetalleOC detalleForm :msn"/>
+                    <p:commandButton value="Actualizar" actionListener="#{detalleOrdenCompraBean.editar()}" oncomplete="PF('valor').hide();" update=":datosDetalleOC detalleForm :msn"/>
+
+                </p:panelGrid>            
+            </h:form>
+        </p:dialog> 
+
+
+        <h:form id="datosDetalleOC">
+            <p:fieldset legend="DETALLE DE ORDENES DE COMPRA" toggleable="true" style="text-align: center">
+                <p:dataTable var="d" value="#{detalleOrdenCompraBean.listaDetalleOrdenCompra}"> 
+
+                    <p:column headerText="ID DETALLE">
+                        <h:outputText value="#{d.idDetalle}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="ID ORDEN COMPRA">
+                        <h:outputText value="#{d.ordenCompraidOrden.idOrden}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="DESCRIPCIÓN">
+                        <h:outputText value="#{d.descripcion}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="CANTIDAD">
+                        <h:outputText value="#{d.cantidad}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="PRECIO COMPRA">
+                        <h:outputText value="#{d.precioCompra}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="PRODCUTO">
+                        <p:outputLabel value="#{d.productoidProducto.idProducto}"/>
+                    </p:column>
+
+                    <p:column headerText="ELIMINAR">
+                        <p:commandButton value="Eliminar" actionListener="#{detalleOrdenCompraBean.eliminar(d)}" update=":datosDetalleOC :msn"/>
+                    </p:column>
+                    <p:column headerText="ACTUALIZAR">
+                        <p:commandButton value="Editar" actionListener="#{detalleOrdenCompraBean.cargarDatos(d)}" update=":detalleForm" oncomplete="PF('valor').show();"/>
+                    </p:column>  
+                </p:dataTable>
+            </p:fieldset>
+        </h:form>
+    </h:body>
+    <footer class="footer">
+        <div class="container">
+            <p>Erlin Enrique Olaya</p>
+            <p>Paula Andrea Monsalve</p>
+            <p>Jimmy Rodriguez Rodriguez</p>
+            <p>Sandra Patricia Fernandez</p>
+            <p>Sistema de información de gestión de mantenimiento de control de sólidos</p>
+            <p>Cel. 3505294142</p>
+            <p>Bogotá DC</p>
+            <a href="../../Inicio.xhtml">www.mcm.services.com.co</a>
+        </div>
+    </footer>
+</html>
+

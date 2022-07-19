@@ -1,0 +1,267 @@
+body {
+    background: #2193b0;
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    font-family: georgia;
+    color: #000000;
+}
+
+/*Estilo cabecera*/
+.header{
+    background: #00788A;
+    color: white;
+    padding: 0.1rem 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+}
+.Inicio{
+    position: fixed;
+    left: 1200px;
+}
+.Idioma{
+    width: 35px;
+    height: 35px;
+    left: 1200px;
+    border-radius: 100%;
+}
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo{
+    letter-spacing: 20px;
+    font-size: 3em;
+}
+.menu-icon{
+    display: none;
+}
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.venta01{
+    position: fixed;
+    right: 250%;
+}
+.show >li {
+    position: relative;
+    display: inline-block;
+    margin:16px 0;
+}
+.show > li > a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: georgia;
+    text-decoration: none;
+    transition: all 0.4s linear;
+    border-radius: 20px;
+}
+.show li a:hover {
+    background: #2193b0;
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    transition: all 0.4s;
+}
+#pantalla-dividida {
+    display: flex;
+}
+
+  .submenu{
+                position: absolute;
+                background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+                background: linear-gradient(to right, #6dd5ed, #2193b0);
+                width: 160%;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 1.5s;
+                display: block;
+                font-size: 1rem;
+                border-radius: 20px;
+            }
+            .submenu li a{
+                display: block;
+                padding: 10px;
+                color: #fff;
+                line-height: 1.6em; 
+                font-family: georgia;
+                text-decoration: none;
+
+            }
+            .show li:hover .submenu{
+                visibility: visible;
+                opacity: 1;
+                background:#2193b0;
+            }
+
+@media only screen and (max-width: 767px){
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+    }
+    .navigation {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .navigation h4{
+        display: none;
+    }
+    .navigation h1{
+        font-size: 1.6rem;
+    }
+    .logo{
+        font-size: 1.4rem;
+    }
+    .navigation ul{
+        display: none;
+    }
+    .navigation ul.show{
+        display: block;
+    }
+    .navigation ul li {
+        display: none;
+    }
+    .navigation ul li a {
+        display: block;
+        padding: 0.5rem 0;
+        transition: all 0.4s linear;
+        border-radius: 5px;
+    }
+    .navigation ul li a:hover {
+        background: #4a4a4a;
+    }
+    main {
+        padding-top: 8rem;
+    }
+}
+
+
+
+
+
+
+
+/*Estilo de el formulario*/
+
+#clienteForm {
+    display: contents;
+}
+
+fieldset legend{
+    font-weight: 600;
+    font-size: 20px;
+    font-family: georgia;
+}
+
+/*Estilo Tablas*/
+button *{
+    background: #2193b0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+    color: #000000;
+}
+#nuevo{
+    font-size: 14px;
+    margin: 170px 10px;
+    background-color: #00788A;
+    border:solid 2px #d8d8d8;
+    margin-bottom:8px;
+    width:350px;
+    color:#797979;
+    text-align: center;
+    padding-left: 20px;
+    padding-right:20px;
+    border-top-left-radius: 20px 10px;
+    border-top-right-radius: 20px 10px;
+}
+
+.field_set{
+    border-color: #797979;
+    border-style: solid;
+    background: #2193b0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+.formulario__btn{
+    background-color: #00788A;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 6px;
+    border: 2px solid #797979;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+fieldset *{
+    color: #000000;
+    font-family: georgia;
+}
+.ui-fieldset-toggleable .ui-fieldset-legend{
+    background-color: 008B9D;
+    text-align: center;
+    color: #000000;
+    text-transform: none;
+    border-radius: 35px 0px 35px 0px;
+}
+.ui-draggable .ui-dialog-titlebar{
+    background-color: #00788A;
+}
+.ui-fieldset, .ui-fieldset{
+    background: #6dd5ed; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    color: #000000;
+}
+
+legend *{
+    text-transform: none;    
+}
+td{
+    text-align: center;
+    font-family: georgia;
+    color: #000000;
+}
+
+tr:nth-child(even){
+    background: #2193b0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ccccff, #9999ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ccccff, #9999ff);
+}
+tr:hover td{
+    background: #6dd5ed;
+}
+
+
+
+
+
+/*Estilo pie de pagina*/
+
+.footer {
+    background: #f2f2f2;
+    padding: 4rem 0;
+    text-align: center;
+    margin-top: 6rem;
+    line-height: 0;
+    color: #000000
+}
+.container{
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+

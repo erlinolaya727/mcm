@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">${perfil}</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                <li class="breadcrumb-item active">${perfil}</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <!-- /.col-md-6 -->
+                        <div class="col-lg-12">
+
+
+                            <div class="card">
+                                <div class="card-header border-0">
+                                    <h3 class="card-title">Mi Perfil</h3>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-sm btn-tool">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-tool">
+                                            <i class="fas fa-bars"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h:form enctype="multipart/form-data">
+                                        <div class="row">
+                                            <h:graphicImage
+                                                height="128px"
+                                                width="128px"
+                                                class="rounded mx-auto d-block"
+                                                id="fotoPerfil"
+                                                value="/ImgServlet/#{usuarioBean.usuLog.usuFoto}">
+                                            </h:graphicImage>
+                                          
+                                            <h:inputFile value="#{usuarioBean.archivoFoto}" class="btn badge-info" >
+                                                <f:ajax render="fotoPerfil fotoPerfilVertical" listener="#{usuarioBean.cargarFotoPerfil()}"></f:ajax>
+                                            </h:inputFile>
+
+                                            <button style="display: none" type="reset" id="resetform" class="btn btn-dark">Reset</button>
+
+                                        </div>
+                                    </h:form>
+
+                                    <br></br>
+                                    <h:form id="formActualizar"  >
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromnom">Nombres</label>
+                                                    <h:inputText required="true"
+                                                                 maxlength="60"
+                                                                 requiredMessage="Ingrese un nombre valido"
+                                                                 class="form-control"
+                                                                 id="fromnom" 
+                                                                 value="#{usuarioBean.usuLog.nombre}"/>
+                                                    <h:message for="fromnom" style="color: red"></h:message>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromape">Apellidos</label>
+                                                    <h:inputText 
+                                                        required="true"
+                                                        maxlength="60"
+                                                        requiredMessage="Ingrese un apellido valido"
+                                                        class="form-control" 
+                                                        id="fromape" 
+                                                        value="#{usuarioBean.usuLog.apellido}"/>
+                                                    <h:message for="fromape" style="color: red"></h:message>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromcro">Email</label>
+                                                    <h:inputText disabled="true" class="form-control" id="fromcro" value="#{usuarioBean.usuLog.email}"/>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromdr">Direccion</label>
+                                                    <h:inputText 
+                                                        required="true"
+                                                        maxlength="60"
+                                                        requiredMessage="Ingrese un direccion valido"
+                                                        class="form-control" 
+                                                        id="fromdr" 
+                                                        value="#{usuarioBean.usuLog.direccion}"/>
+                                                    <h:message for="fromdr" style="color: red"></h:message>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromtel">Telefono</label>
+                                                    <h:inputText 
+                                                        required="true"
+                                                        maxlength="10"
+                                                        requiredMessage="Ingrese un telefono valido"
+                                                        class="form-control" 
+                                                        id="fromtel" 
+                                                        value="#{usuarioBean.usuLog.telefono}"/>
+                                                    <h:message for="fromtel" style="color: red"></h:message>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="formActualizar:fromclv">Clave</label>
+                                                    <h:inputSecret 
+                                                        required="true"
+                                                        maxlength="8"
+                                                        requiredMessage="Ingrese un clave valida"
+                                                        class="form-control"
+                                                        id="fromclv" 
+                                                        value="#{usuarioBean.usuLog.pass}"/>
+                                                    <h:message for="fromclv" style="color: red"></h:message>
+                                                </div>
+
+                                                <div class="form-group" style="text-align: right;">
+                                                    <h:commandButton action="#{usuarioBean.actualizarmisdatos()}" class="btn btn-danger" value="Actualizar"></h:commandButton>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+    </ui:composition>
+</html>
+

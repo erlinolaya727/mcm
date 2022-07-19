@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Requisición de mantenimiento</title>
+        <link rel="stylesheet" href="../../Estilos/StyleManto.css"/>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>-->
+    </h:head>
+    <a href="#" class="boton_1">Bienvenido:
+        <br/>
+        <br/>
+        Coordinador de proyectos</a>
+    <a href="#" class="boton_4">Mantenimiento</a>
+    <h:body>
+        <header class="header">
+            <a href="../../views/Maintenance/Modu_Mant.xhtml"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+            <a class="Inicio" name="Inicio" href="../Usuario/Validacion de usuario.xhtml">Cerrar sesión</a>
+            <div class="container logo-nav-container">
+                <a href="#" class="logo">MCM</a>
+                <span class="menu-icon">Ver menú</span>
+                <nav class="navigation">
+                    <ul class="show">
+                        <li><a href="../Venta/Modu_Vent - coor.xhtml">Ventas</a>
+                        </li>
+                        <li><a href="../Inventario/Modu_Inve - coor.xhtml">Inventario</a>
+                        </li>
+                        <li><a href="Modu_Mant.xhtml">Mantenimiento</a>
+                        </li>
+                        <li><a href="../Tarea/Modu_Tare.xhtml">Tareas</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+
+                <h2>Requisición de mantenimiento</h2>
+
+                <form action="" class="formulario" id="formulario">
+
+
+                    <!--PERSONA SOLICITANTE-->
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre del solicitante</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="nombre" id="nombre" class="formulario__input" placeholder="Nombre completo"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,números y guión bajo</p>
+                    </div>
+
+                    <!--NOMBRE EMPRESA-->
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre empresa</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="nombre" id="nombre" class="formulario__input" placeholder="MCM SAS"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div>
+
+                    <!--NIT-->
+
+                    <div class="formulario__grupo" id="grupo__usuario">
+                        <label for="usuario" class="formulario__label">NIT</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="usuario" id="usuario" class="formulario__input" placeholder="900900900-0"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div>
+
+                    <!--DIRECCIÓN DEL SERVICIO-->
+                    <div class="formulario__grupo" id="grupo__direccion">
+                        <label for="direccion" class="formulario__label">Direccion del servicio</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="direccion" id="direccion" class="formulario__input"
+                                   placeholder="Dirección"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div>
+
+                    <!--TIPO DE MAQUINARIA-->
+                    <div class="formulario__grupo" id="grupo__apellido">
+                        <label for="text" class="formulario__label">Tipo de maquinaria</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="maquinaria" id="maquinaria" class="formulario__input" placeholder="Hyperpool"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div>
+
+                    <!--CÓDIGO DE REFERENCIA MAQUINARIA-->
+                    <div class="formulario__grupo" id="grupo__correo">
+                        <label for="correo" class="formulario__label">Código de maquina</label>
+                        <div class="formulario__grupo-input">
+                            <input type="email" name="correo" id="correo" class="formulario__input"
+                                   placeholder="cliente@mcm.com"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guión bajo y
+                            guión medio.</p>
+                    </div>
+
+                    <!--FECHA SOLICITUD SERVICIO-->
+                    <div class="formulario__grupo" id="grupo__telefono">
+                        <label for="fecha" class="formulario__label">Fecha solicitud</label>
+                        <div class="formulario__grupo-input">
+                            <input type="date" name="fecha" id="fecha" class="formulario__input" placeholder=""/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El solo pueden ser números</p>
+                    </div>
+
+                    <!--FECHA AGENDAR SERVICIO-->
+                    <div class="formulario__grupo" id="grupo__telefono">
+                        <label for="fecha" class="formulario__label">Fecha agendar</label>
+                        <div class="formulario__grupo-input">
+                            <input type="date" name="fecha" id="fecha" class="formulario__input" placeholder=""/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El solo pueden ser números</p>
+                    </div>
+
+                    <!--NOMBRE CONTACTO-->
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre contacto</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="nombre" id="nombre" class="formulario__input" placeholder="Nombre completo"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div>
+
+                    <!--URGENCIA DEL SERVICIO-->
+                    <div class="formulario__grupo" id="grupo__telefono">
+                        <label for="telefono" class="formulario__label">Caracter del servicio</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="telefono" id="telefono" class="formulario__input" placeholder="Urgente"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El solo pueden ser números</p>
+                    </div>
+
+                    <!--NOMBRE RESPONSABLE-->
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre responsable</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" name="nombre" id="nombre" class="formulario__input" placeholder="Nombre completo"/>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El usuario debe ser entre 4 a 16 caracteres, puede contener letras,
+                            números y guión bajo</p>
+                    </div><br/>
+
+
+                    <!--CONFIRMAR DATOS-->
+                    <div class="formulario__grupo" id="grupo__terminos">
+                        <label for="formulario__label">
+                            <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos"/>
+                            <b>Se confirmo los datos</b>
+                        </label>
+                    </div>
+
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                        <p><i class="fas fa-exclamation-triangle"></i><b> Error: </b>Diligencie el formulario completamente</p>
+                    </div>
+
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="formulario__btn">Enviar</button>
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Usuario creado, revisa tu correo
+                            electrónico para terminar el proceso</p>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <br/>
+        <div class="main-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Nombre</th><th>Stock</th><th>Descripción</th><th>Marca</th><th>Garantía</th><th>Valor<br/>Unitario</th><th></th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>1</td><td>Aerómetros</td><td>20</td><td>Medición<br/> de densidad</td><td>Alla France</td><td>2 Meses</td><td>$ 4000</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>2</td><td>Agitadores</td><td>45</td><td>Mezclar<br/>o revolver</td><td>IKA</td><td>2 Años</td><td>$ 8000</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>3</td><td>Alcoholímetros</td><td>11</td><td>Determina el<br/> nivel de alcohol </td><td>ACS</td><td>6 Meses</td><td>$ 7500</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>4</td><td>Balones<br/>de destilación</td><td>33</td><td>Diseñado para<br/>el calentamiento</td><td>Brixco</td><td>1 Año</td><td>$ 3600</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>5</td><td>Fondo plano</td><td>4</td><td>Calentar<br/>compuestos</td><td>Simax</td><td>6 Meses</td><td>$ 2200</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>6</td><td>Densimetros</td><td>25</td><td>Mide la<br/>densidad</td><td>Brabender</td><td>9 Meses</td><td>$ 6800</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>7</td><td>Condensadores</td><td>13</td><td>Almacena<br/>energía</td><td>Schneider</td><td>2 Años</td><td>$ 7300</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <td>8</td><td>Cristalizadores</td><td>16</td><td>Cristaliza<br/>el soluto</td><td>Conair</td><td>3 Meses</td><td>$ 5000</td><td><button value="Actualizar" class="Bot_Clase"><i class="fas fa-sign-out-alt"></i></button></td>
+                </tr>
+            </table>
+        </div>
+
+        <h:outputScript library="js" name="../../JS/Validar datos.js"></h:outputScript>
+        <!--<script src="../../JS/Validar datos.js"></script>-->
+        <h:outputScript library="js" name="https://kit.fontawesome.com/2c36e9b7b1.js"></h:outputScript>
+        <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
+        <br/>
+        <footer class="footer">
+            <div class="container">
+                <p>Erlin Enrique Olaya</p>
+                <p>Paula Andrea Monsalve</p>
+                <p>Jimmy Rodriguez Rodriguez</p>
+                <p>Sandra Patricia Fernandez</p>
+                <p>Sistema de información de gestión de mantenimiento de control de sólidos</p>
+                <p>Cel. 3505294142</p>
+                <p>Bogotá DC</p>
+                <a href="../../Inicio.xhtml">www.mcm.services.com.co</a>
+            </div>
+        </footer>
+    </h:body>
+
+</html>
+

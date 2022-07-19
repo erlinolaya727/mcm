@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+
+        <title>Recuperar</title>
+
+        <!--// ICONS //-->
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+        <!--// BOOTSTRAP & Main //-->
+
+        <link href="#{request.contextPath}/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="#{request.contextPath}/assets/css/main.css" rel="stylesheet"/>
+
+
+
+        <link rel="stylesheet" href="#{request.contextPath}/assets/css/fontawesome.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/assets/css/tooplate-main.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/assets/css/owl.css"/>
+
+    </head>
+    <h:body>
+        <div class="col-md-5 col-md-offset-1">
+
+            <h:form class="signup-form" style="margin: 0">
+
+                <h2 class="text-center">Ingrese E-Mail</h2>
+
+                <hr/>
+
+                <div class="form-group">
+                    <h:inputText value="#{usuarioBean.correoIn}" requiredMessage="Se requiere un correo valido !!" required="true" html5:placeholder="Correo Electronico" class="form-control" />
+                </div>
+
+                <div class="form-group text-center">
+                    <fieldset>
+                        <h:commandButton onclick="Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Enviando correo !!!!',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })" action="#{usuarioBean.recuperarClave()}" 
+                                         class="btn btn-blue btn-block" value="Recordar !">
+                        </h:commandButton>
+                    </fieldset>
+                </div>
+            </h:form>
+
+        </div>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- Additional Scripts -->
+        <script src="#{request.contextPath}/assets/js/custom.js"></script>
+        <script src="#{request.contextPath}/assets/js/owl.js"></script>
+
+        <script language = "text/Javascript">
+                            function correoSend() {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Enviando correo !!!!',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+                            }
+        </script>
+
+        <script language = "text/Javascript">
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t) {                   //declaring the array outside of the
+                if (!cleared[t.id]) {                      // function makes it static and global
+                    cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                    t.value = '';         // with more chance of typos
+                    t.style.color = '#fff';
+                }
+            }
+        </script>
+    </h:body>
+</html>
+

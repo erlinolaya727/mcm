@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Recuperar Password</title>
+        <link rel="stylesheet" type="text/css" href="../../Estilos/StyleValidaciónUsuario.css"/>
+        <a href="../../views/User/Recover password.xhtml"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+
+    </h:head>
+    <h:body>
+        <!--
+        <div class="subscribe-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h1>Recuperar clave !!!</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-8 offset-md-2">
+                        <div class="main-content">
+                            <div class="container">
+                                <h:form>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <fieldset>
+                                                <h:inputText value="#{usuarioBean.usuario.email}" required="true" html5:placeholder="Correo Electronico" class="form-control" />
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <h:commandButton onclick="Swal.fire({
+                                                            position: 'top-end',
+                                                            icon: 'info',
+                                                            title: 'Enviando correo !!!!',
+                                                            showConfirmButton: false,
+                                                            timer: 3000
+                                                        })" action="#{usuarioBean.recuperarClave()}" class="button" value="Recordar !">
+                                                </h:commandButton>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <form action="" name="form1" onsubmit='return validar();'>
+            <h2>Verifique su correo</h2>
+
+            <div class="formulario__grupo" id="grupo__correo">
+                <div class="formulario__grupo-input">
+                    <input type="email" name="correo" id="correo" class="barra" placeholder="usuario@mcm.com"/>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guión bajo y guión medio.</p>
+                <p class="center-content"><input type="submit" class="btn btn-green" value="Recuperar"/></p>
+            </div>
+
+
+            <div class="valido">
+                <a href="Validacion de usuario.xhtml">¿Iniciar sesión?</a>
+            </div>
+        </form>
+        
+    </h:body>
+</html>

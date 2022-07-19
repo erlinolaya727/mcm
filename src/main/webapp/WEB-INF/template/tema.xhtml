@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>AdminLTE 3 | Dashboard 3</title>
+
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"/>
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/fontawesome-free/css/all.min.css"/>
+        <!-- IonIcons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+        <!-- Theme style -->
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/adminlte.min.css"/>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+        
+        
+        <f:event type="preRenderView" listener="#{usuarioBean.validarUsuario()}"/>
+            
+        
+    </h:head>
+    <h:body  class="hold-transition sidebar-mini">
+        <div class="wrapper">
+
+            <ui:insert name="areasuperior">
+                <ui:include src="areasuperior.xhtml"></ui:include>
+            </ui:insert>
+
+            <ui:insert name="menuvertical">
+                <ui:include src="menuvertical.xhtml"></ui:include>
+            </ui:insert>
+
+            <ui:insert name="areatrabajo">
+                <ui:include src="areatrabajo.xhtml"></ui:include>
+            </ui:insert>
+
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+
+            <ui:insert name="footer">
+                <ui:include src="footer.xhtml"></ui:include>
+            </ui:insert>
+
+
+
+        </div>
+
+
+        <!-- REQUIRED SCRIPTS -->
+
+        <!-- jQuery -->
+        <script src="#{request.contextPath}/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="#{request.contextPath}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE -->
+        <script src="#{request.contextPath}/dist/js/adminlte.js"></script>
+
+        <!-- OPTIONAL SCRIPTS -->
+        <script src="#{request.contextPath}/plugins/chart.js/Chart.min.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="#{request.contextPath}/dist/js/pages/dashboard3.js"></script>
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Registro Bonificación</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="../../Estilos/StyleVenta.css"/>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>-->
+        <h:outputStylesheet library="css" name="StyleGeneral.css"/>    
+    </h:head>
+
+           <header class="header">
+            <a href="../../views/Sale/Modu_Vent - coor.html"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+            <a class="Inicio" name="Inicio" href="../Usuario/Validacion de usuario.html">Cerrar sesión</a>
+            <div class="container logo-nav-container">
+                <a href="#" class="logo">MCM</a>
+
+                <span class="menu-icon">Ver menú</span>
+                <nav class="navigation">
+                    <ul class="show">
+                        <li><a href="../Venta/ventas.xhtml">Ventas</a>
+                            <ul class="submenu">
+                                <li><a href="../Venta/cliente.xhtml" class="boton">Clientes</a></li>
+                                <li><a href="../Venta/Factura.xhtml" class="boton">Factura</a></li>
+                                <li><a href="../Venta/detallerFactura.xhtml" class="boton">Detalle Factura</a></li>
+                                <li><a href="../Venta/modoPago.xhtml" class="boton">Modo de pago</a></li>
+                                <li><a href="../Venta/taladro.xhtml" class="boton">Taladro</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="productos.xhtml">Inventario</a>
+                            <ul class="submenu">
+                                <li><a href="../Inventario/categoriaProducto.xhtml" class="boton">Categorias</a></li>
+                                <li><a href="../Inventario/detalleOrdenCompra.xhtml" class="boton">Detalle Orden Compra</a></li>
+                                <li><a href="../Inventario/inventario.xhtml" class="boton">Inventario</a></li>
+                                <li><a href="../Inventario/productos.xhtml" class="boton">Productos</a></li>
+                                <li><a href="../Inventario/ordenDeCompra.xhtml" class="boton">Orden de Compra</a></li>
+                                <li><a href="../Inventario/registroProveedores.xhtml" class="boton">Registro Proveedores</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../Mantenimiento/servicios.xhtml">Mantenimiento</a>
+                            <ul class="submenu">
+                                <li><a href="../Mantenimiento/ordenServicio.xhtml" class="boton">Orden de Servicio</a></li> 
+                                <li><a href="../Mantenimiento/servicios.xhtml" class="boton">Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tareas.xhtml">Tareas</a>
+                            <ul class="submenu">
+                                <li><a href="Agenda.xhtml" class="boton">Agenda</a></li>
+                                <li><a href="bonificacion.xhtml" class="boton">Bonificacion</a></li>
+                                <li><a href="detalleTareas.xhtml" class="boton">Detalle Tareas</a></li>
+                                <li><a href="tareas.xhtml" class="boton">Tareass</a></li>
+                                <li><a href="tecnicos.xhtml" class="boton">Tecnicos</a></li>
+                                <a href=""></a>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <h:body>
+
+        <p:growl id="msn"/>
+        <h:form id="nuevo">
+            <p:fieldset legend="" toggleable="true">
+                <p:panelGrid columns="1">
+                    <p:commandButton value="nuevo" oncomplete="PF('valor').show();"/>
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+
+        <p:dialog widgetVar="valor" modal="true" header="nuevo bono" resizable="false" showEffect="clip">
+            <p:ajax event="close" listener="#{bonificacionBean.limpiarDatos()}" update=":bonificacionform"/>
+            <h:form id="bonificacionform">
+                <h:commandLink>
+                    <h:graphicImage url="Imagenes/img/pdf.png" width="60" />
+                    <p:dataExporter type="pdf" target="Datos_de_clientes" fileName="clintespdf"/>
+                </h:commandLink>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="idBonificacion"/>
+                    <p:inputText value="#{bonificacionBean.bonificacion.idBonificacion}"/>
+                    <p:outputLabel value="total"/>
+                    <p:inputText value="#{bonificacionBean.bonificacion.total}"/>
+                    <p:outputLabel value="fecha"/>
+                    <p:calendar value="#{bonificacionBean.bonificacion.fecha}"/>
+                    <p:outputLabel value="Id Técnico "/>
+                    <p:selectOneMenu value="#{bonificacionBean.tecnicos.idEmpleado}">
+                        <f:selectItems value="#{tecnicoBean.listaTecnicos}" var="tec" itemValue="#{tec.idEmpleado}" itemLabel="#{tec.idEmpleado}">
+                        </f:selectItems>
+                    </p:selectOneMenu>  
+                    <p:commandButton value="Guardar Bonificacion" actionListener="#{bonificacionBean.guardar()}" oncomplete="PF('valor').hide();"  update=":datosBono bonificacionform :msn"/>
+                    <p:commandButton value="Actualizar Bonificacion" actionListener="#{bonificacionBean.editar()}" oncomplete="PF('valor').hide();" update=":datosBono bonificacionform :msn"/>
+                </p:panelGrid>            
+            </h:form>
+        </p:dialog> 
+
+
+        <h:form id="datosBono">
+            <p:fieldset legend="DATOS BONIFICACION" toggleable="true">
+                <div style="display: inline-block; align-content: space-between ">
+                    <h:commandLink>
+                        <h:graphicImage url="../../resources/excel.jpg" width="40" height="40" style="border-radius: 100%" />
+                        <p:dataExporter type="xls" target="tabla4" fileName="DatosBonoExcel"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage url="../../resources/pdf_1.png" width="40" height="40" style="border-radius: 100%"/>
+                        <p:dataExporter type="pdf" target="tabla4" fileName="DatosBonoPdf"/>
+                    </h:commandLink>
+                </div>
+                <p:dataTable id="tabla4" var="p" value="#{bonificacionBean.listaBonificacion}"> 
+                    <p:column headerText="ID BONO" filterBy="#{p.idBonificacion}">
+                        <h:outputText value="#{p.idBonificacion}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="ID USUARIO" filterBy="#{p.tecnicos.idEmpleado}">
+                        <h:outputText value="#{p.tecnicos.idEmpleado}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="TOTAL">
+                        <h:outputText value="#{p.total}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="FECHA">
+                        <h:outputText value="#{p.fecha}">
+                            <f:convertDateTime pattern="dd/MM/YYYY"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="ELIMINAR">
+                        <p:commandButton value="Eliminar" actionListener="#{bonificacionBean.eliminar(p)}" update=":datosBono :msn"/>
+                    </p:column>
+
+                    <p:column headerText="EDITAR">
+                        <p:commandButton value="Editar" actionListener="#{bonificacionBean.cargarDatos(p)}" update=":bonificacionform" oncomplete="PF('valor').show();"/>
+                    </p:column>  
+                </p:dataTable>
+            </p:fieldset>
+        </h:form>
+        <footer class="footer">
+            <div class="container">
+                <p>Erlin Enrique Olaya</p>
+                <p>Paula Andrea Monsalve</p>
+                <p>Jimmy Rodriguez Rodriguez</p>
+                <p>Sandra Patricia Fernandez</p>
+                <p>Sistema de información de gestión de mantenimiento de control de sólidos</p>
+                <p>Cel. 3505294142</p>
+                <p>Bogotá DC</p>
+                <a href="../../Inicio.xhtml">www.mcm.services.com.co</a>
+            </div>
+        </footer>
+    </h:body>
+</html>
+

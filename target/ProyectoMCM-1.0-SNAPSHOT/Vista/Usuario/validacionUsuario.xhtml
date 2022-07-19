@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <a class="Inicio" href="../../Inicio.xhtml">Menú Inicio</a>
+        <title>Validación de usuario MCM</title>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+        <link rel="stylesheet" type="text/css" href="../../Estilos/StyleValidaciónUsuario.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap" rel="stylesheet"/>-->
+        <script type="text/javascript" src="../../JS/Validar usuario.js"></script>
+        <a href="../../views/User/User validation.xhtml"><img id="Idioma" name="Idioma" class="Idioma" src="../../Imagenes/Inglaterra.jpg"/></a>
+    </h:head>
+
+    <h:body>
+        <p:growl id="msj"/>
+        <h:form class="Metro">
+            <h2>Iniciar sesión</h2>
+            <div class="valido">
+
+                <br/><br/>
+                <p:outputLabel value="Ingrese E-amil"/>
+                <p:inputText style="width: 96%" required="true" id="txtUser" value="#{usuarioBean.usuario.email}"/>
+                <!--<input type="text" name="usuario" required="" class="barra"/> <span class="barra"></span>-->
+                <br/>
+            </div>
+            <div class="valido">
+                <br/>
+                <p:outputLabel value="Ingrese Contraseña"/>
+                <br/><br/>
+                <p:password style="width: 96%" id="txtUser2" required="true" value="#{usuarioBean.usuario.pass}"/> 
+                <!--<input type="password" name="clave" required="" class="barra"/> <span class="barra"></span>-->
+            </div>
+            <br/>
+            <div class="valido">
+                <a href="RecuperarContraseña.xhtml">¿Olvidaste la contraseña?</a>
+                <br/>
+         
+                <p:commandButton value="Ingresar" action="#{usuarioBean.validar()}"/>
+                <!--<p class="center-content"><input type="button" class="btn btn-green" value="Ingresar" onclick="Validar()"/></p>-->
+            </div>
+            <div class="valido">
+                <a href="Registrar.xhtml">Crea una cuenta nueva</a>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
